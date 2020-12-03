@@ -6,9 +6,11 @@ ENV PYTHONUNBUFFERED 1
 
 # Install dependencies
 COPY ./requirements.txt /requirements.txt
-#EXPOSE 80
-#RUN ping -c 10 127.0.0.1
-RUN pip install  --trusted-host files.pythonhosted.org --trusted-host pypi.org --trusted-host pypi.python.org -r /requirements.txt
+RUN apk add --update --no-cache postgresql-client
+RUN apk add --update --no-cache --virtual .tmp-build-deps \
+      gcc libc-dev linux-headers postgresql-dev
+RUN pip install  -r /requirements.txt
+RUN apk del .tmp-build-deps
 
 
 # Setup directory structure

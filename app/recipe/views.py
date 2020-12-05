@@ -10,7 +10,7 @@ from recipe import serializers
 class BaseRecipeAttrViewSet(viewsets.GenericViewSet,
                             mixins.ListModelMixin,
                             mixins.CreateModelMixin):
-    """Base viewset for user owned recipe attributes"""
+    """Base viewset  for user owned recipe attributes"""
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 

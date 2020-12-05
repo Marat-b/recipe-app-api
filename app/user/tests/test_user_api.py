@@ -125,7 +125,8 @@ class PublicUserApiTests(TestCase):
             """Test that POST is not allowed on the me URL"""
             res = self.client.post(ME_URL, {})
 
-            self.assertEqual(res.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+            self.assertEqual(res.status_code,
+                             status.HTTP_405_METHOD_NOT_ALLOWED)
 
         def test_update_user_profile(self):
             """Test updating the user profile for authenticated user"""

@@ -54,6 +54,15 @@ class MyTestCase(unittest.TestCase):
 
         self.assertEqual(str(tag), tag.name)
 
+    def test_ingredient_str(self):
+        """Test the ingredient string representation"""
+        ingredient = models.Ingredient.objects.create(
+            user=sample_user(email='test@fake.com'),
+            name='Cucumber'
+        )
 
-if __name__ == '__main__':
-    unittest.main()
+        self.assertEqual(str(ingredient), ingredient.name)
+
+
+# if __name__ == '__main__':
+#     unittest.main()
